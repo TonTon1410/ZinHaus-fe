@@ -1,0 +1,54 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { @apply h-full; }
+  body { @apply bg-gray-50 text-gray-900 dark:bg-neutral-900 dark:text-gray-100 transition-colors; }
+}
+
+@layer components {
+  /* Card & section (giữ nguyên nếu bạn đã có) */
+  .card {
+    @apply rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur
+           dark:border-white/10 dark:bg-neutral-900/70 shadow-card transition-colors;
+  }
+  .section { @apply card p-4; }
+
+  /* Buttons (giữ nguyên nếu đã có) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300
+           px-4 py-2 text-sm font-medium transition-colors duration-250
+           hover:bg-gray-100 active:bg-gray-200
+           dark:border-white/15 dark:hover:bg-white/10 dark:active:bg-white/15;
+  }
+  .btn-primary {
+    @apply btn border-primary-600 bg-primary-600 text-white
+           hover:bg-primary-500 active:bg-primary-700;
+  }
+
+  /* ==== INPUTS HIỆN ĐẠI (áp dụng toàn trang) ==== */
+  .input, .select, .textarea {
+    @apply w-full rounded-xl border border-gray-300 bg-white/90 text-gray-900 placeholder-gray-400
+           px-4 py-3 text-base
+           transition-colors
+           dark:border-white/15 dark:bg-neutral-800 dark:text-gray-100 dark:placeholder-gray-400
+           focus:outline-none; /* không dùng @apply với focus:xxx ở đây */
+  }
+  /* Biến thể focus tách selector – tránh lỗi @apply focus:... */
+  .input:focus, .select:focus, .textarea:focus {
+    @apply border-primary-500 ring-2 ring-primary-500;
+  }
+
+  /* Kích thước thêm (tuỳ chọn) */
+  .input-sm, .select-sm, .textarea-sm { @apply px-3 py-2 text-sm; }
+  .input-lg, .select-lg, .textarea-lg { @apply px-5 py-3.5 text-[17px]; }
+
+  /* Select & Textarea phụ */
+  .select { @apply pr-8; }
+  .textarea { @apply min-h-[96px]; }
+
+  /* Label + field stack tiện dụng */
+  .field { @apply block; }
+  .field > .label { @apply block text-sm font-medium mb-1; }
+}
